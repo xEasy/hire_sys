@@ -37,7 +37,10 @@ class TD < Thor
       end
     end
 
-    Role.create(:title => "admin"   , :permission_ids => (1..36).to_a)
+    Role.create(:title => "admin"   , :permission_ids => (1..41).to_a)
+    Role.create(:title => "manager"   , :permission_ids => (1..41).to_a)
+    Role.create(:title => "boss"   , :permission_ids => (1..41).to_a)
+    
     
     puts "------完成------------"
   end
