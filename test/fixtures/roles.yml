@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  permission_ids: MyText
+  title: MyString
+  active: false
+
+two:
+  permission_ids: MyText
+  title: MyString
+  active: false

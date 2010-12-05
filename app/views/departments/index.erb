@@ -1,0 +1,9 @@
+<%= javascript_include_tag '/wando/hire/setting/Department.js' %>
+
+
+<script language="javascript" type="text/javascript">
+  Ext.onReady( function() {
+    Wando.Department.init(false);
+    Wando.Department.module.showList( "main" );
+  } );
+</script>

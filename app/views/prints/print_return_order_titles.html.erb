@@ -1,0 +1,40 @@
+<%= javascript_include_tag "/ckeditor/ckeditor" %>
+
+<p style='width: 90%'>
+  <textarea cols='80' id='editor1' name="editor1" rows="10">
+    <%= stylesheet_link_tag "printing", :media => "all" %>
+    <div class="page" id="page0">
+      <div class="form">
+        <h1>东莞市三江汇聚服装有限公司</h1>
+        <h2>退车单汇总</h2>
+        <div class="table">
+          <table border=1 width=100%>
+              <tr>
+                <td width=5%>退车单号</td>
+                <td width=8%>部门</td>
+                <td width=8%>退车经手人</td>
+                <td width=8%>车行经手人</td>
+                <td width=15%>退车单日期</td>
+                <td width=13%>状态</td>
+                <td>备注</td>
+              </tr>
+                  <% @orders.each_with_index do |order, index| %>
+                    <tr>
+                      <td><%= order.id %></td>
+                      <td><%= order.department.name %></td>
+                      <td><%= order.return_person %></td>
+                      <td><%= order.sew_dealer %></td>
+                      <td><%= order.create_date %></td>
+                      <td><%= order.state_cn %></td>
+                      <td><%= order.remark %></td>
+                    </tr>
+                <% end %>
+          </table>
+        </div>
+      </div>
+    <div>
+  </textarea>
+</p>
+<%= javascript_include_tag "/ckeditor/replace" %>
+
+

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>三江汇聚租车系统</title>
+
+    <link rel="stylesheet" type="text/css" href="/ext/resources/css/ext-all.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/wando.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/menu.css"/>
+
+    <script type="text/javascript" src="/ext/ext-base-debug.js"></script>
+    <script type="text/javascript" src="/ext/ext-all-debug.js"></script>
+
+    <script type="text/javascript" src="/wando/Wando.js"></script>
+    <script type="text/javascript" src="/wando/info/Base.js"></script>
+    <script type="text/javascript" src="/wando/info/Query.js"></script>
+    <script type="text/javascript" src="/wando/info/QueryConfig.js"></script>
+    <script type="text/javascript" src="/wando/info/Record.js"></script>
+    <script type="text/javascript" src="/wando/info/linkColumn.js"></script>
+    
+    
+ </head>
+ <body>
+        <div id="header" style="position: relative">
+        <% if current_user %>
+          <div id="top">
+            <%= current_user.login %>( <%= current_user.department.name %> )&nbsp; 你好！
+            <span class="separator">|</span>
+            <a class="logout" href="/logout">logout</a>
+            <span style="float: right">三江汇聚租车系统</span>
+          </div>
+          <%= render :partial => "/layouts/menu" %>
+        <% end %>
+        </div>
+        <%= yield %>
+	</body>
+</html>

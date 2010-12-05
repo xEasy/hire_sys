@@ -1,0 +1,172 @@
+
+/*------------------------------------------------------------------------
+ *=LOGIN/SIGNIN
+ ------------------------------------------------------------------------*/
+#errors,
+#signin {
+  background-color: #eee;
+  margin: 50px auto;
+  color: #333;
+  width: 500px;
+  text-align: left;
+  font-weight: bold;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+
+#errors {
+  width: 373px;
+}
+
+#errors p,
+#signin p {
+  padding: 5px;
+  font-weight: normal;
+}
+
+#errors h3,
+#signin h3 {
+  padding: 9px 18px;
+  background: #069;
+  color: #fff;
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-topleft: 4px;
+}
+
+.box-content {
+  padding: 18px;
+}
+
+.btns {
+  background: #eee;
+  padding: 6px;
+  text-align: right;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+
+#reset-password {
+  background: #ddd;
+  border-top: 1px solid #ccc;
+}
+
+#reset-password .btns {
+  background: #ccc;
+}
+
+/*------------------------------------------------------------------------
+ *=SYSTEM
+ ------------------------------------------------------------------------*/
+#flashes {
+  text-align: center;
+  font-weight: bold;
+}
+
+#flash-notice, #flash-errors, #flash-archived, #errorExplanation, .delete-dialog {
+  background: #bec;
+  color: #031;
+  padding: 9px;
+  border-bottom: 1px solid #8DA;
+}
+
+#flash-archived {
+  border-top-color: #DB0;
+  background: #fd4;
+  border-bottom-color: #fe7;
+  color: #641;
+}
+
+#flash-errors, .delete-dialog {
+  background: #fdd;
+  border-top-color: #c00;
+  border-bottom-color: #fbb;
+  color: #700;
+}
+
+.form-tbl {
+  width: 100%;
+}
+
+.form-tbl td, .form-tbl th {
+  padding: 9px;
+  border-bottom: 1px solid #eee;
+}
+
+.form-tbl th {
+  text-align: right;
+  vertical-align: top;
+}
+
+.form-tbl input[type=text], .form-tbl input[type=password] {
+  font-size: 140%;
+  width: 200px;
+}
+
+.form-tbl .hint {
+  color: #aaa;
+}
+
+p.btns {
+  margin-top: 9px;
+}
+
+p.info {
+  padding: 9px !important;
+  font-weight: bold;
+  background: #ddd;
+  color: #555;
+}
+
+.tabcontent {
+  margin-left: 200px;
+}
+
+#confirmation {
+  margin: 0 !important;
+  padding: 0;
+  float: left;
+  width: 200px;
+}
+
+#confirmation li {
+  list-style: none;
+  padding: 18px 9px;
+  border-bottom: 1px solid #ccc;
+  background: #f7f7f7;
+}
+
+#confirmation li:last-child {
+  border-bottom: none;
+}
+
+#confirmation h4 {
+  font-size: 140%;
+  margin: 0;
+}
+
+#confirmation li:hover {
+  background: #f7f7f7;
+}
+
+#confirmation h4 a:hover {
+  color: #000;
+}
+
+#confirmation p {
+  padding: 3px;
+  color: #656565;
+}
+
+#confirmation li.selected {
+  background: #fff;
+}
+
+#confirmation li.selected h4 a {
+  color: #000;
+}

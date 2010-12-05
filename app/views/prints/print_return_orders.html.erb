@@ -1,0 +1,43 @@
+<%= javascript_include_tag "/ckeditor/ckeditor" %>
+
+<button id='adjust-format' onclick='adjustPrintFormat();'>调整格式</button>
+<p style='width: 70%'>
+   <textarea cols='80' id='editor1' name="editor1" rows="10">
+        <%= stylesheet_link_tag "printing", :media => "all"%>
+        <% count = 0 %>
+        <% @orders.each do |orders|%>
+        <%= render(:partial => "return_order_print", :locals => { :count => count, :cls => 'receipt' })%>
+        <% count += 1%>
+        <% end %>
+    </textarea>
+</p>
+
+<%= javascript_include_tag "/ckeditor/replace" %>
+
+<script language='javascript'>
+    function adjustPrintFormat() { 
+        var b = document.getElementById('adjust-format');
+        b.textContent = '已调整';
+        b.onclick = undefined;
+      
+        var iframe = document.getElementsByTagName('iframe')[0];          
+        var iframeDom = iframe.contentDocument;                           
+        var receipts = iframeDom.getElementsByClassName('receipt');            
+
+        var tmp = [];
+        for(var i=0; i<receipts.length; i++) { 
+            var r = receipts[i];
+            if(tmp.length == 0) { 
+                tmp.push(r);
+            } else { 
+                var last = tmp.pop();
+                if( (last.offsetHeight + r.offsetHeight) > Wando.pageHeight )
+                    tmp.push(r);
+                else  
+                    iframeDom.getElementById(last.id + '-break').innerHTML = '';
+            }
+        }
+    }
+</script>
+
+

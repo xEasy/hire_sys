@@ -1,0 +1,56 @@
+<%= javascript_include_tag "/ckeditor/ckeditor" %>
+
+<p style='width: 90%'>
+  <textarea cols='80' id='editor1' name="editor1" rows="10">
+    <%= stylesheet_link_tag "printing", :media => "all" %>
+    <div class="page" id="page0">
+      <div class="form">
+        <h1>东莞市三江汇聚服装有限公司</h1>
+        <h2>租车单汇总</h2>
+        <div class="table">
+          <table border=1 width=100%>
+              <tr>
+                <td width=5%>单号</td>
+                <td>衣车名称及类型</td>
+                <td>数量</td>
+                <td>可退车数量</td>
+                <td>款号</td>
+                <td>款号</td>
+                <td width=8%>租车部门</td>
+                <td>租车人</td>
+                <td>租车日期</td>
+                <td>预计退还日期</td>
+                <td>状态</td>
+                <td>车行</td>
+                <td>部门备注</td>
+                <td>价格</td>
+                <td>采购备注</td>
+              </tr>
+                  <%= can_view_price = true %>
+                  <% @hire_items.each_with_index do |item, index| %>
+                    <tr>
+                      <td><%= item.id %></td>
+                      <td><%= item.sew.name %></td>
+                      <td><%= item.count %></td>
+                      <td><%= item.retain_count %></td>
+                      <td><%= item.cloth_number %></td>
+                      <td><%= item.sew_hire_order.department.name %></td>
+                      <td><%= item.hire_person %></td>
+                      <td><%= item.hire_date %></td>
+                      <td><%= item.expect_return_date %></td>
+                      <td><%= item.sew_hire_order.state_cn %></td>
+                      <td><%= item.garage %></td>
+                      <td><%= item.dep_remark %></td>
+                      <td><%= can_view_price ? item.price : "--" %></td>
+                      <td><%= item.purchasing_remark %></td>
+                    </tr>
+                <% end %>
+          </table>
+        </div>
+      </div>
+    <div>
+  </textarea>
+</p>
+<%= javascript_include_tag "/ckeditor/replace" %>
+
+

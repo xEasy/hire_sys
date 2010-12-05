@@ -1,0 +1,49 @@
+
+a.logout { 
+  color: #ffffff;
+  font-size: 16px;
+}
+a.logout:hover { 
+  color: #72345E;
+  font-size: 16px;
+}
+
+#top { 
+  height: auto;
+  background-color: #507AAA;
+  color: #ffffff;
+  padding: 5px 7px 5px 7px;
+  font-size: 15px;
+  -moz-border-radius: 0 0 2px 2px;
+}
+
+.separator { 
+  font-weight: bold;
+  color: #C0AFBB;
+  font-size: 16px;
+}
+
+#user_role_id { 
+  width: 155px;
+}
+#user_department_id { 
+  width: 155px;
+}
+
+.form { 
+  width: 155px;
+}
+.form input { 
+  width: 150px;
+}
+.permission { 
+  font-size: 15px; 
+  color: #152B30
+}
+.back { 
+  color: black;
+  padding-left: 1px;
+}
+#adjust-format { 
+  margin-left: 5px;
+}

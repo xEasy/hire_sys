@@ -1,0 +1,55 @@
+
+<div id="new_user" style="display: none">
+  <div style="padding: 20px 0 0 20px">
+    <% @user.password = @user.password_confirmation = nil %>
+
+    <%= error_messages_for :user %>
+    <% form_for :user, :url => users_path do |f| -%>
+
+    <p><%= label_tag '用户名' %><br/>
+    <%= f.text_field :login, :style => "width: 150px" %></p>
+
+    <p><%= label_tag '姓名' %><br/>
+    <%= f.text_field :name, :style => "width: 150px" %></p>
+
+    <p><%= label_tag '密码' %><br/>
+    <%= f.password_field :password, :style => "width: 150px" %></p>
+
+    <p><%= label_tag '确认密码' %><br/>
+    <%= f.password_field :password_confirmation, :style => "width: 150px" %></p>
+    <p>
+      <%= label_tag '部门' %><br/>
+      <%= f.select :department_id, departments_for_select %>
+    </p>
+    <p>
+      <%= label_tag '用户组' %><br/>
+      <%= f.select :role_id, roles_for_select %>
+    </p>
+    <p><%= submit_tag "注册" %></p>
+    <% end -%>
+  </div>
+</div>
+
+<script language="javascript">
+    Ext.onReady(function() { 
+        new Ext.Viewport({
+            layout: 'border',
+            items: [
+                Wando.menuStub,
+                { region: 'center', title: "注册用户" , html: Ext.get("new_user").dom.innerHTML }
+            ]
+        });
+    });
+</script>
+
+
+
+<%= javascript_include_tag '/wando/setting/UserSignUp.js' %>
+
+<script language="javascript" type="text/javascript">
+
+  Ext.onReady( function() {
+    Wando.UserSignUp.init();
+  });
+
+</script>

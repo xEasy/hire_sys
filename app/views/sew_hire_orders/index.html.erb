@@ -1,0 +1,15 @@
+
+<%= javascript_include_tag '/wando/hire/HireOrders.js' %>
+
+<script language="javascript" type="text/javascript">
+  Wando.erbData = {
+    allPermitted    : <%= privileges_of_current_user.to_json %>,
+    department_id   :  <%= current_user.department_id %>, 
+    department_name :  "<%= current_user.department.name %>"
+  };
+
+  Ext.onReady( function() {
+    Wando.HireOrders.init();
+  } );
+</script>
+

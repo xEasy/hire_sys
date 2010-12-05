@@ -1,0 +1,13 @@
+
+<%= javascript_include_tag '/wando/hire/Permission' %>
+
+
+<script language='javascript'>
+  Wando.erbData = { 
+      records: <%= @records.to_json %>
+  };
+
+  Ext.onReady(function() { 
+      Wando.Permission.init();
+  });
+</script>

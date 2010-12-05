@@ -1,0 +1,15 @@
+<style type="text/css">
+  pre .constant  {color: #0D403F;}
+  pre .special   {color: red ;}
+  pre .operator  {color: red ;}
+  pre .statement {color: #8D185D; font-weight: bold;}
+  pre .proc      {color: #E4931C; font-weight: bold;}
+  pre .privilege, pre .context {font-weight: bold}
+  pre .preproc, pre .comment, pre .comment span {color: grey !important;}
+  pre .note {color: #a00; position:absolute; cursor: help; left: 10px }
+  pre.with-notes {padding-left: 30px}
+</style>
+<pre class="with-notes">
+  <%= syntax_highlight(h(@auth_rules_script)) %>
+</pre>
+

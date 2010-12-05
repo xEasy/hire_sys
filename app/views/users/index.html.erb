@@ -1,0 +1,12 @@
+<%= javascript_include_tag '/wando/hire/setting/User.js' %>
+
+<script language="javascript">
+    Wando.erbData = { 
+    };
+    
+    Ext.onReady(function() { 
+        Wando.User.init(false);
+        Wando.User.module.showList("main");
+    });
+</script>
+

@@ -1,0 +1,36 @@
+
+<table cellpadding=0 cellspacing=0 style="width:100%; padding-left: 1px">
+  <tr>
+    <td style="width:100%;">
+      <ul id="qm0" class="qmmc">
+        <li>
+          <a id="homepage" href="/">主页</a>
+          <ul>
+            <li><a href="/sew_hire_orders">租车申请单</a></li>
+            <li><a href="/sew_return_orders">退车单</a></li>
+          </ul>
+        </li>
+        <li><span class="qmdivider qmdividery" ></span></li>
+        <li>
+          <a id="detailpage" href="#">明细</a>
+          <ul>
+            <li><a href="/hire_items">租车明细</a></li>
+            <li><a href="/return_items">退车明细</a></li>
+          </ul>
+        </li>
+        <li><span class="qmdivider qmdividery" ></span></li>
+        <li>
+          <a id="setting" href="#">设置</a>
+          <ul>
+            <li><a href="/departments">部门</a></li>
+            <li><a href="/sew">衣车名称及类型</a></li>
+            <li><a href="/users/edit_current_user">修改个人信息</a></li>
+            <li><%= link_to('用户列表', '/users') if(permitted_to? :index, :users) %></li>
+            <li><%= link_to('用户组'  , '/roles') if(permitted_to? :index, :roles) %></li>
+            <li><%= link_to('权限', '/permissions') if(permitted_to? :index, :permissions) %></li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>

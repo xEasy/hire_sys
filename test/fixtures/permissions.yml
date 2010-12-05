@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  controller: MyString
+  controller_zh: MyString
+  action: MyString
+  action_zh: MyString
+
+two:
+  controller: MyString
+  controller_zh: MyString
+  action: MyString
+  action_zh: MyString

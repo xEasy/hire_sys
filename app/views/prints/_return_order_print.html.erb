@@ -1,0 +1,70 @@
+
+ <div class=<%= cls %> id=<%= "page#{ count }"%>>
+        <div class='form'>
+        <table background="/images/rbg.jpg">
+          <td>
+            <h2 style="line-height: 10px">东莞市三江汇聚服装有限公司</h2>
+            <h3>退车申请单</h3>
+            <table>
+                <tr>
+                    <td><div>租车部门: <%= @orders.slice(count).department.name %></div></td>
+                    <td><div>退车单日期: <%= @orders.slice(count).create_date.strftime("%Y年%m月%d日")%></div></td>
+                </tr>
+                <tr>
+                  <td><div>退车经手人: <%= "   " %><%= @orders.slice(count).return_person %></div></td>
+                  <td><div>车行经手人: <%= "   " %><%= @orders.slice(count).sew_dealer %></div></td>
+                </tr>
+            </table>
+            <br/>
+            <div class='table'>
+            <table border=1>
+                <tr>
+                  <td width=5%>序号</td>
+                  <td width=15%>衣车名称及类型</td>
+                  <td width=7%>款号</td>
+                  <td width=7%>退车数量</td>
+                  <td width=7%>未退数量</td>
+                  <td width=7%>租车日期</td>
+                  <td width=7%>预计退还日期</td>
+                  <td >实际退还日期</td>
+                  <td width=11%>车行</td>
+                  <td width=15%>单价</td>
+                  <td width=7%>总价</td>
+                  <td>备注</td>
+                </tr>
+                    <% can_view_price = true %>
+                    <% @items.slice(count).each_with_index do |item, i| %>
+                      <tr>
+                        <td><%= i+1 %></td>
+                        <td><%= item.sew_name %></td>
+                        <td><%= item.cloth_number %></td>
+                        <td><%= item.count %></td>
+                        <td><%= item.retain_count %></td>
+                        <td><%= item.hire_date %></td>
+                        <td><%= item.expect_return_date %></td>
+                        <td><%= item.return_date %></td>
+                        <td><%= item.garage %></td>
+                        <td><%= can_view_price ? item.price : "--" %></td>
+                        <td><%= can_view_price ? item.total_price : "--" %></td>
+                        <td><%= item.remark %></td>
+                      </tr>
+                  <% end %>
+            </table>
+            <br/>
+            <table>
+              <tr>
+                <td align="left">部门经理签名:<%= %></td>
+                <td align="left">采购经理签名:<%= %></td>
+              </tr>
+            </table>
+            </div>
+          </td>
+        </table>
+        </div>
+    </div>
+    <div id=<%= "page#{ count }-break" %> style='visibility: hidden;'>
+      <p class='PageNext'></p>
+    </div><!--important 插入分页符-->
+    <br />
+
+

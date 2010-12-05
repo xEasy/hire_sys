@@ -1,0 +1,18 @@
+<%= javascript_include_tag '/wando/hire/AddSewHireOrder.js' %>
+
+<script language="javascript" type="text/javascript">
+  Wando.erbData = {
+      id: "<%= @sew_hire_order.id %>",
+      department_id: "<%= @sew_hire_order.department_id %>",
+      department_name: "<%= @sew_hire_order.department_name %>",
+      create_date: "<%= @sew_hire_order.create_date %>",
+      hire_person: "<%= @sew_hire_order.hire_person %>",
+      remark:      "<%= @sew_hire_order.remark %>"
+    
+  };
+
+  Ext.onReady( function() {
+        Wando.AddSewHireOrder.init("Edit");
+      })
+</script>
+

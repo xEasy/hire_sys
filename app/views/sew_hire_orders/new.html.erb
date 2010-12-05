@@ -1,0 +1,12 @@
+<%= javascript_include_tag '/wando/hire/AddSewHireOrder.js' %>
+
+<script language="javascript" type="text/javascript">
+  Wando.erbData = {
+      department_id   :   <%= current_user.department_id %>, 
+      department_name :  "<%= current_user.department.name %>"
+  };
+
+  Ext.onReady( function() {
+        Wando.AddSewHireOrder.init("Add");
+      })
+</script>

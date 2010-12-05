@@ -1,0 +1,17 @@
+<%= javascript_include_tag '/wando/hire/AddSewReturnOrder.js' %>
+
+<script language="javascript" type="text/javascript">
+  Wando.erbData = {
+      id: "<%= @sew_return_order.id %>",
+      department_id: "<%= @sew_return_order.department_id %>",
+      department_name: "<%= @sew_return_order.department_name %>",
+      create_date: "<%= @sew_return_order.create_date %>",
+      return_person: "<%= @sew_return_order.return_person %>",
+      sew_dealer: "<%= @sew_return_order.sew_dealer %>",
+      remark: "<%= @sew_return_order.remark%>"
+  };
+
+  Ext.onReady( function() {
+    Wando.AddSewReturnOrder.init( 'Edit' );
+  } );
+</script>
