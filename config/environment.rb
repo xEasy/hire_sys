@@ -42,7 +42,15 @@ end
 
 ActiveRecord::Base.include_root_in_json = false
 
-require 'state_machine'
+unless Rails.env.production?
+  require 'bundler'
+  Bundler.setup
+  require 'machinist/active_record'
+  require 'faker'
+  require 'randexp'
+  require 'state_machine'
+end
+
 
 def get_error_msg( r )
   msg = []

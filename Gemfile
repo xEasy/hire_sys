@@ -1,0 +1,12 @@
+source "http://rubygems.org/"
+
+gem "ruby-debug"
+gem "state_machine"
+gem "machinist"
+gem "faker"
+gem "randexp"
+gem "annotate-models",  "1.0.4"
+gem "rails",            "2.3.5"
+gem "mysql",            "2.8.1"
+gem "capistrano"
+gem "ruby_parser"
