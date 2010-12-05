@@ -1,0 +1,50 @@
+
+
+Processing SewHireOrdersController#index (for 127.0.0.1 at 2010-12-05 20:20:28) [GET]
+Redirected to http://localhost:3000/login
+Filter chain halted as [:authentication] rendered_or_redirected.
+Completed in 24ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-12-05 20:20:28) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 48ms (View: 43, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-12-05 20:20:29) [POST]
+  Parameters: {"commit"=>"登录", "authenticity_token"=>"EsZ95u0+v1kumIHdNo2AHn77JD34FkQ/PxK1iPKLGEU=", "login"=>"admin", "password"=>"hzuhzu"}
+Failed login for 'admin' from 127.0.0.1 at Sun Dec 05 12:20:29 UTC 2010
+Redirected to http://localhost:3000/
+Completed in 138ms (DB: 132) | 302 Found [http://localhost/session]
+
+
+Processing SewHireOrdersController#index (for 127.0.0.1 at 2010-12-05 20:20:29) [GET]
+Redirected to http://localhost:3000/login
+Filter chain halted as [:authentication] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-12-05 20:20:29) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-12-05 20:20:35) [POST]
+  Parameters: {"commit"=>"登录", "authenticity_token"=>"EsZ95u0+v1kumIHdNo2AHn77JD34FkQ/PxK1iPKLGEU=", "login"=>"admin", "password"=>"hzuhzu"}
+Failed login for 'admin' from 127.0.0.1 at Sun Dec 05 12:20:35 UTC 2010
+Redirected to http://localhost:3000/
+Completed in 3ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing SewHireOrdersController#index (for 127.0.0.1 at 2010-12-05 20:20:35) [GET]
+Redirected to http://localhost:3000/login
+Filter chain halted as [:authentication] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-12-05 20:20:35) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/login]

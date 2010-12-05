@@ -22,7 +22,7 @@ class ReturnItem < ActiveRecord::Base
   before_save :valid_count
   before_save :save_state_cn
   before_save :save_total
-  
+  require "state_machine" 
   state_machine :pay_state, :initial => :unpaid do
     before_transition :unpaid => :paid, :do => :validates_order_approve_state
     before_transition :unpaid => :cancel, :do => :validates_order_cancel_state
@@ -42,21 +42,6 @@ class ReturnItem < ActiveRecord::Base
     rs
   end
 
-  def validates_order_approve_state
-    if order_approed?
-      return true
-    end
-    self.error.add( "","订单未通过批复不能进行付款操作" )
-    return false
-  end
-  def validates_order_cancel_state
-    if order_cancel?
-      return true
-    end
-    self.error.add( "","订单未取消不能取消付款" )
-    return false
-  end
-  
   def return_count
     self.count
   end
@@ -142,5 +127,21 @@ class ReturnItem < ActiveRecord::Base
       end
       true
     end
+    def validates_order_approve_state
+      if order_approed?
+        return true
+      end
+      self.error.add( "","订单未通过批复不能进行付款操作" )
+      return false
+    end
+    def validates_order_cancel_state
+      if order_cancel?
+        return true
+      end
+      self.error.add( "","订单未取消不能取消付款" )
+      return false
+    end
+  
+    
 
 end
