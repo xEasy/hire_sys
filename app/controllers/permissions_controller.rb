@@ -4,7 +4,7 @@ class PermissionsController < ApplicationController
   
   # GET /permissions
   def index
-    groups = Permission.all(:group => 'controller', :order => 'id')
+    groups = Permission.all(:group => "controller", :order => "id")
     @records = []
     groups.each do |r|
       h = { :controller => r.controller, :controller_zh => r.controller_zh, :actions => [] }
