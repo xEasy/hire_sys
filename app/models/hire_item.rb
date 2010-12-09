@@ -62,8 +62,14 @@ class HireItem < ActiveRecord::Base
   end
   #可退车的数量等于租车数量-（已批准退车数量+退车中的数量）
   def retain_count
-    can_not_return_count = self.return_items.sew_return_order_state_equals( ['approved','pending'] ).sum(:count)
+    can_not_return_count = self.returned_count + self.returning_count
     retain_count = count - can_not_return_count
+  end
+  def returned_count
+    self.return_items.sew_return_order_state_equals( ['approved'] ).sum(:count) 
+  end
+  def returning_count
+   self.return_items.sew_return_order_state_equals( ['pending'] ).sum(:count) 
   end
   #可退车的租车单项目
   def self.can_be_returned_items_id

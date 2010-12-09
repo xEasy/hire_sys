@@ -12,7 +12,7 @@
 
 
     User.create(:password_confirmation =>"hzuhzu", :password => "hzuhzu", :login => "admin", :email => "admin@gmail.com", 
-      :role_id => 1, :name => '管理员', :department_id => 1)  # important!
+      :role_id => 1, :name => '管理员', :department_id => 1)
 
 
     ActiveRecord::Base.connection.execute('truncate permissions;')
@@ -22,7 +22,7 @@
       end
     end
 
-    Role.create(:title => "admin"   , :permission_ids => (1..41).to_a)
+    Role.create(:title => "admin"   , :permission_ids => (1..42).to_a)
     Role.create(:title => "manager"   , :permission_ids => (1..41).to_a)
     Role.create(:title => "boss"   , :permission_ids => (1..41).to_a)
     

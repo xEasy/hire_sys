@@ -48,9 +48,10 @@ Wando.HireOrders = {
   initMapping: function() {
     var ps = this.pm.permissionsOf("sew_hire_orders");
     this.stateAndLinkMapping = {
-      "pending" : Wando.__( ["dep_approve","cancel","edit"], ps ),
+      "pending"      : Wando.__( ["dep_approve","cancel","edit"], ps ),
       "dep_approved" : Wando.__( [ "approve", "cancel", "edit" ], ps ),
-      "approved"     : Wando.__( [ ], ps ),
+      "approved"     : Wando.__( [ "hire_complite"], ps ),
+      "hire_complite": Wando.__( [ ], ps ),
       "cancel"       : Wando.__( [ ], ps ),
       "all"          : Wando.__( [ ], ps )
     };
@@ -71,7 +72,12 @@ Wando.HireOrders = {
       );
       this.query.createQueryOptions(
         "approved",
-        [{ content: "state_cn", condition: "equals", value: "批复完成" }],
+        [{ content: "state_cn", condition: "equals", value: "部门租车中" }],
+        extraParams
+      );
+      this.query.createQueryOptions(
+        "hire_complite", 
+        [{ content: "state_cn", condition: "equals", value: "租车完成" }],
         extraParams
       );
       this.query.createQueryOptions(
@@ -89,6 +95,7 @@ Wando.HireOrders = {
           edit          : { text: '编辑'      , handler: scope.onEdit       },
           dep_approve   : { text: '主管批准'  , handler: scope.onDepApprove },
           approve       : { text: '采购批准'  , handler: scope.onApprove    },
+          hire_complite : { text: '租车完成'  , handler: scope.onHireComplite },
           cancel        : { text: '取消'      , handler: scope.onCancel     },
       };
 
@@ -151,6 +158,7 @@ Wando.HireOrders = {
           "id",
           "number",
           "create_date",
+          "create_time",
           "hire_person",
           "department/name",
           "state",
@@ -166,10 +174,11 @@ Wando.HireOrders = {
       var sm = new Ext.grid.CheckboxSelectionModel();
       var columns = [
         sm,
-        { header: "租车单ID"     , sortable: true, dataIndex: 'id', width:20 },
+        { header: "租车单ID", sortable: true, dataIndex: 'id', width:20 },
         { header: "部门",     sortable: true, dataIndex: 'department/name', width:50 },
         { header: "租车人",   sortable: true, dataIndex: 'hire_person', width:50 },
         { header: "申请日期", sortable: true, dataIndex: 'create_date', width: 50 },
+        { header: "时间",     sortable: true, dataIndex: 'create_time', width: 50 }, 
         { header: "状态",     sortable: true, dataIndex: 'state_cn', width:50 },
         { header: "备注",     sortable: true, dataIndex: 'remark' }
       ]
@@ -327,8 +336,11 @@ Wando.HireOrders = {
         text: '主管已批(0)', leaf: true,
         listeners: { click: function() { _this.loadHireOrder("dep_approved"); } }
       },{
-        text: '批复完成(0)', leaf: true,
+        text: '部门租车中(0)', leaf: true,
         listeners: { click: function() { _this.loadHireOrder("approved"); } }
+      },{
+        text: '租车完成(0)', leaf: true,
+        listeners: { click: function() { _this.loadHireOrder("hire_complite"); } }
       },{
         text: '取消(0)', leaf: true,
         listeners: { click: function() { _this.loadHireOrder("cancel"); } }
@@ -341,7 +353,7 @@ Wando.HireOrders = {
     return new Ext.tree.TreePanel({
       root   : root,
       split  : true,
-      width  : 120,
+      width  : 130,
       maxSize : 140,
       minSize : 80,
       title  : '状态列表',
@@ -424,6 +436,11 @@ Wando.HireOrders = {
     scope.batchProcess('approve','批准');
   },
 
+  onHireComplite: function  () {
+    var scope = Wando.HireOrders;
+    scope.batchProcess('hire_complite','租车完成');
+  },
+
   onCancel: function() {
     var scope = Wando.HireOrders;
     scope.batchProcess('cancel','取消'); 
@@ -433,7 +450,7 @@ Wando.HireOrders = {
       var scope = Wando.HireOrders;
       
       var queryOptionsArray = [];
-      var array = ["pending", "dep_approved", "approved", "cancel", "all"];
+      var array = ["pending", "dep_approved", "approved","hire_complite", "cancel", "all"];
 
       for(var i=0; i<array.length; i++) { 
           queryOptionsArray.push( scope.query.findQueryOptions(array[i]) );

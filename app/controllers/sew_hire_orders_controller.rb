@@ -1,6 +1,6 @@
 class SewHireOrdersController < ApplicationController
   
-  filter_access_to [:new, :edit, :dep_approve, :approve, :cancel , :update_hire_items]
+  filter_access_to [:new, :edit, :dep_approve,:hire_complite, :approve, :cancel , :update_hire_items]
     
   #GET /sew_hire_orders 
   def index
@@ -55,6 +55,9 @@ class SewHireOrdersController < ApplicationController
   end
   def approve
     all_update_state( 'approve!' )
+  end
+  def hire_complite
+    all_update_state( 'hire_complite!' )
   end
   def cancel
     all_update_state( 'cancel!' )

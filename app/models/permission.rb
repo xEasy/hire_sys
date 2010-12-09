@@ -24,9 +24,10 @@ class Permission < ActiveRecord::Base
       { :id => 2, :action => 'edit',   :action_zh => '编辑租车单' },
       { :id => 3, :action => 'dep_approve', :action_zh => '主管批准' },
       { :id => 4, :action => 'approve',    :action_zh => '采购批准' },
+      { :id => 42,:action => 'hire_complite', :action_zh => '完成租车' },
       { :id => 5, :action => 'cancel',     :action_zh => '取消租车单' },
       { :id => 6, :action => 'update_hire_items',  :action_zh => '添加价格，车行' },
-      { :id => 7,  :action => 'view_all',          :action_zh => '查看所有单据' },
+      { :id => 7, :action => 'view_all',          :action_zh => '查看所有单据' },
       { :id => 8, :action => 'view_price',        :action_zh => '查看价格' },
       { :id => 9, :action => 'view_garage',       :action_zh => '查看车行' }
     ]

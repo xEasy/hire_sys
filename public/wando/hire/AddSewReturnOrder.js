@@ -1,15 +1,14 @@
 Wando.AddSewReturnOrder = {
   init: function (actionCn) {
     this.scope = this;
- //   this.pm = new Wando.PermissionManeger( Wando.erbData.allPermitted );
+    this.pm = new Wando.PermissionManager(Wando.erbData.allPermitted);
+    
     this.actionCn = actionCn;
     
     this.addWin   = this.createAddWin();
     
     this.isEditing = this.actionCn == "Edit";
    // this.isAdding  = this.actionCn == "Add";
-   //
-   //
 
     this.form = this.createForm();
     this.grid = this.createGrid();
@@ -18,8 +17,9 @@ Wando.AddSewReturnOrder = {
     delete_item_ids = [];
 
     var tmp = [{ content: "sew_hire_order/department/name" , condition: "equals", value: Wando.erbData.department_name }];
-    var defaultCcv   = tmp;
-    //defaultCcv.push({content:"id",condition:"wantIds",value: ""  });
+    var defaultCcv = this.pm.permittedTo('view_all', 'hire_items') ? undefined : tmp;
+    
+    defaultCcv.push({content:"sew_hire_order/state",condition:"equals",value: "hire_complite"  });
 
     this.query = new Wando.base.Query({
         modelName      :  'hire_item',
@@ -58,18 +58,25 @@ Wando.AddSewReturnOrder = {
       layout     : 'column',
       labelAlign : 'right',
       items:[{
-        height: 100, columnWidth: 0.23, layout: 'form',
+        height: 100, columnWidth: 0.20, layout: 'form',
         items: [{
-          fieldLabel:'部门', id: 'department_name', xtype:'textfield', readOnly: true ,width:100, value: Wando.erbData.department_name 
+          fieldLabel: '车行经手人', id: 'sew_dealer', xtype: 'textfield', width: 100, value: Wando.erbData.sew_dealer
         },{
           fieldLabel: '经手人', id: 'return_person', xtype: 'textfield', width: 100, value: Wando.erbData.return_person 
         }]
       },{
-        layout: 'form', columnWidth: 0.23,
+        layout: 'form', columnWidth: 0.20,
         items: [{
-          fieldLabel: '退车单日期', id: 'create_date', xtype:'datefield', width:90, format: "Y-m-d", editable: false, value: Wando.erbData.create_date
+          fieldLabel: '退车单日期', id: 'create_date', xtype:'datefield',format: "Y-m-d", width:90, value: Wando.erbData.create_date,
+          readOnly:true
         },{
-          fieldLabel: '车行经手人', id: 'sew_dealer', xtype: 'textfield', width: 90, value: Wando.erbData.sew_dealer
+          fieldLabel: '时间', id:'create_time', xtype:'timefield', format:"H:i", width:90, value: Wando.erbData.create_date,
+          readOnly: true
+        }]
+      },{
+        layout: 'form', columnWidth: 0.20,
+        items: [{
+          fieldLabel:'部门', id: 'department_name', xtype:'textfield', readOnly: true ,width:100, value: Wando.erbData.department_name 
         }]
       },{
         layout: 'form',
@@ -107,7 +114,7 @@ Wando.AddSewReturnOrder = {
   var sew_hire_order_id = "sew_hire_order_id"
   var sew_name          = "sew/name";
   var hire_count        = "count";
-  var garage            = "garage";
+ // var garage            = "garage";
   var hire_date         = "hire_date";
   var retain_count      = "retain_count";
   var cloth_number      = "cloth_number";
@@ -116,7 +123,7 @@ Wando.AddSewReturnOrder = {
       sew_hire_order_id = "hire_item/sew_hire_order_id";
       sew_name          = "hire_item/sew/name";
       hire_count        = "hire_item/count";
-      garage            = "hire_item/garage";
+ //     garage            = "hire_item/garage";
       hire_date         = "hire_item/hire_date";
       retain_count      = "hire_item/retain_count";
       cloth_number      = "hire_item/cloth_number"
@@ -128,13 +135,15 @@ Wando.AddSewReturnOrder = {
   }
   
   var column = new Ext.grid.ColumnModel([
-    { header: '租车单ID', dataIndex:  sew_hire_order_id,sortable: true, width: 60, renderer: renderMotif },
+    { header: '租车单ID', dataIndex:  sew_hire_order_id,sortable: true, width: 30, renderer: renderMotif },
     { header: '衣车名称及类型', dataIndex: sew_name ,sortable: true, width: 60, renderer: renderMotif },
-    { header: '车行名称', dataIndex:  garage ,sortable: true, width: 50, renderer: renderMotif },
+ //   { header: '车行名称', dataIndex:  garage ,sortable: true, width: 50, renderer: renderMotif },
     { header: '款号',     dataIndex:  cloth_number,sortable: true, width: 30, renderer: renderMotif },
     { header: '租车日期', dataIndex:  hire_date,sortable: true, width: 40, renderer: renderMotif },
     { header: '租车数量', dataIndex:  hire_count,sortable: true, width: 30, renderer: renderMotif }, 
     { header: '未退数量', dataIndex:  retain_count, width: 30, renderer: renderMotif },
+    { header: '已退车数量', dataIndex: 'returned_count', width:30, sortable:true },
+    { header: '退车中数量', dataIndex: 'returning_count', width: 30,sortable: true }, 
     { header: '实退数量', dataIndex: 'return_count',sortable: true, width: 30, editor: new Ext.form.NumberField() },
     { header: '实退日期', dataIndex: 'return_date',sortable: true, width: 40, editor: Wando.dateEditor, renderer: Wando.dateRender },
     { header: '备注',     dataIndex: 'remark',sortable: true, editor: new Ext.form.TextField() }
@@ -150,8 +159,12 @@ Wando.AddSewReturnOrder = {
       { name: hire_date },
       { name: retain_count },
       { name: hire_count },
-      { name: garage },
+ //     { name: garage },
       { name: 'return_count' },
+      { name: 'returned_count' },
+      { name: 'returning_count' },
+      { name: 'returned_count' },
+      { name: 'returning_count' },
       { name: 'return_date' },
       { name: 'remark' },
       { name: 'hire_item_id' }
@@ -173,9 +186,15 @@ Wando.AddSewReturnOrder = {
       { text: '添加', handler: scope.addHireItems  },'-',
       { text: '保存', handler: scope.saveHandler   },'-',
       { text: '删除', handler: scope.deleteHandler },'-',
+      { text: '返回(不保存)', handler: scope.backTo }
+      
     ]
   });
   return grid;
+  },
+
+  backTo: function  () {
+    location.href = '/sew_return_orders';
   },
 
   addHireItems: function  () {
@@ -221,6 +240,7 @@ Wando.AddSewReturnOrder = {
         delete_item_ids   :  delete_item_ids,
         //number            :  Ext.getCmp( "number" ).getValue(),
         create_date       :  Ext.getCmp( "create_date" ).getValue(),
+        create_time       :  Ext.getCmp( "create_time" ).getValue(),
         department_id     :  Wando.erbData.department_id,
         return_person     :  Ext.getCmp( "return_person" ).getValue(),
         sew_dealer        :  Ext.getCmp( "sew_dealer" ).getValue(),
@@ -259,13 +279,17 @@ Wando.AddSewReturnOrder = {
 
     var cm = [ 
         sm,
-        { header: '租车单ID', dataIndex: 'sew_hire_order_id',sortable: true, width: 90},
+        { header: '租车单ID', dataIndex: 'sew_hire_order_id',sortable: true, width: 50},
+        { header: 'Id',       dataIndex: 'hire_item_id', sortable: true, width: 50 },
         { header: '衣车名称及类型', dataIndex:'sew/name' ,sortable: true,width: 100 },
         { header: '款号',     dataIndex: 'cloth_number',sortable: true ,width: 60},
         { header: '数量',     dataIndex: 'count',sortable: true , width: 60},
         { header: '未退数量', dataIndex: 'retain_count',sortable: true , width: 60},
+        { header: '已退车数量', dataIndex: 'returned_count', sortable: true, width: 60 },
+        { header: '退车中数量', dataIndex: 'returning_count', sortable: true, width: 60 },
+        { header: '状态',     dataIndex: 'sew_hire_order/state_cn', sortable: true, width: 60 },
         { header: '租车部门', dataIndex: 'sew_hire_order/department/name',sortable: true ,width: 60},
-        { header: '车行',     dataIndex: 'garage' ,sortable: true, width: 80 },
+ //       { header: '车行',     dataIndex: 'garage' ,sortable: true, width: 80 },
         { header: '租车人',   dataIndex: 'sew_hire_order/hire_person',sortable: true, width: 60 },
         { header: '租车日期', dataIndex: 'hire_date',sortable: true,width: 80 },
         { header: '预计退还日期', dataIndex: 'expect_return_date',sortable: true }
@@ -285,11 +309,14 @@ Wando.AddSewReturnOrder = {
           "sew_hire_order_id",
           "sew/name",
           "cloth_number",
+          "sew_hire_order/state_cn",
           "count",
           "retain_count",
+          "returning_count",
+          "returned_count",
           "hire_date",
           "expect_return_date",
-          "garage",
+ //         "garage",
           "sew_hire_order/department/name",
           "sew_hire_order/hire_person"
         ],

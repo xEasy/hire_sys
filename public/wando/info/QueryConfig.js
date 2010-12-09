@@ -23,6 +23,7 @@ Wando.base.Query.config = {
             'department/name'  : { editor: 'combo', url: urls[ 'department/name' ] },
             'hire_person'      : { editor: 'text' },
             'create_date'      : { editor: 'date' },
+            'create_time'      : { editor: 'text' },
             'state_cn'         : { editor: 'combo' , url: urls[ 'hire_order/state_cn' ] },
             'remark'           : { editor: 'text' }
           };
@@ -37,6 +38,7 @@ Wando.base.Query.config = {
               'return_person'     : { editor: 'text' },
               'sew_dealer'        : { editor: 'text' },
               'create_date'       : { editor: 'date' },
+              'create_time'       : { editor: 'text' },
               'state_cn'          : { editor: 'combo', url: urls[ 'return_order/state_cn' ] },
               'remark'            : { editor: 'text' }
           };

@@ -3,7 +3,8 @@
 <script language="javascript" type="text/javascript">
   Wando.erbData = {
       department_id   :   <%= current_user.department_id %>, 
-      department_name :  "<%= current_user.department.name %>"
+      department_name :  "<%= current_user.department.name %>",
+      create_date     :  new Date()
   };
 
   Ext.onReady( function() {

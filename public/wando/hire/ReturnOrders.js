@@ -215,6 +215,7 @@ Wando.ReturnOrders = {
               "return_person",
               "sew_dealer",
               "create_date",
+              "create_time",
               "state_cn",
               "remark",
               "state_cn"
@@ -234,6 +235,7 @@ Wando.ReturnOrders = {
           { header: "退车经手人", sortable: true, dataIndex: 'return_person', width:60 },
           { header: "车行经手人", sortable: true, dataIndex: 'sew_dealer', width: 60},
           { header: "退车单日期", sortable: true, dataIndex: 'create_date', width: 60 },
+          { header: "时间", sortable: true, dataIndex: 'create_time', width: 60 }, 
           { header: "状态", sortable: true, dataIndex: 'state_cn', width: 60 },
           { header: "备注", sortable: true, dataIndex: 'remark' }
       ]

@@ -28,15 +28,17 @@ class SewHireOrder < ActiveRecord::Base
   before_save :save_state_cn
 
   state_machine :initial => :pending do
-    event(:dep_approve) { transition [:pending] => :dep_approved}
-    event(:approve) { transition [:pending,:dep_approved] => :approved }
-    event(:cancel) { transition [:pending,:dep_approved] => :cancel }
+    event(:dep_approve)     { transition [:pending] => :dep_approved}
+    event(:approve)         { transition [:pending,:dep_approved] => :approved }
+    event(:hire_complite)   { transition [:approved] => :hire_complite }
+    event(:cancel)          { transition [:pending,:dep_approved] => :cancel }
   end
 
   StateCn = {
     "pending" => "待批准",
     "dep_approved" => "主管已批",
-    "approved" => "批复完成",
+    "approved" => "部门租车中",
+    "hire_complite" => "租车完成",
     "cancel" => "取消"
   }
 

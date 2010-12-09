@@ -50,9 +50,13 @@ Wando.AddSewHireOrder = {
               fieldLabel: '租车人', id:'hire_person', xtype: 'textfield', width: 100, value: Wando.erbData.hire_person
           }]
           },{
-            height: 100, columnWidth: 0.18, layout: 'form',
+            height: 100, columnWidth: 0.20, layout: 'form',
             items: [ {
-                fieldLabel: '申请日期', id: 'create_date', xtype: 'datefield', width: 110, format: "Y-m-d",emptyText: "请选择", editable:false, value: Wando.erbData.create_date
+                fieldLabel: '申请日期', id: 'create_date', xtype: 'datefield',format: "Y-m-d", width: 110, value: Wando.erbData.create_date,
+                readOnly: true
+            },{
+                fieldLabel: '时间', id: 'create_time', xtype: 'timefield', format: "H:i", width: 110,value:Wando.erbData.create_date,
+                readOnly: true
             } ]
           },{
           layout: 'form',
@@ -168,10 +172,15 @@ Wando.AddSewHireOrder = {
         { text: '添加', handler: scope.addHandler },'-',
         { text: '保存', handler: scope.saveHandler },'-',
         { text: '删除', handler: scope.deleteHandler },'-',
+        { text: '返回(不保存)', handler: scope.backTo }
       ]
     });
 
     return grid;
+  },
+
+  backTo: function  () {
+    location.href = '/';
   },
 
   saveHandler: function() {
@@ -209,6 +218,7 @@ Wando.AddSewHireOrder = {
       var hireOrder  = {
           delete_item_ids  : delete_item_ids,
           create_date      : Ext.getCmp( "create_date" ).getValue(),
+          create_time       :  Ext.getCmp( "create_time" ).getValue(),
           department_id    : Wando.erbData.department_id,
           hire_person      : Ext.getCmp( "hire_person" ).getValue(),
           remark           : Ext.getCmp( "remark" ).getValue(),

@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :print,
     :collection => {
-      :set_session => :post,
+     :set_session => :post,
       :print_hire_orders => :get,
       :print_return_orders => :get,
       :print_hire_items => :get,
@@ -51,6 +51,7 @@ ActionController::Routing::Routes.draw do |map|
       :dep_approve => :put,
       :approve => :put,
       :cancel => :put,
+      :hire_complite => :put,
       :states_for_query => :get
     }
     
