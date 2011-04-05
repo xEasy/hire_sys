@@ -48,6 +48,7 @@ class SewReturnOrdersController < ApplicationController
         "hire_item/sew/name",
         "hire_item/garage",
         "hire_item/cloth_number",
+        "hire_item/actual_hire_date",
         "hire_item/hire_date",
         "hire_item/count",
         "hire_item/retain_count",

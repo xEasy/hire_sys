@@ -14,7 +14,7 @@
 # sew_hire_order_id   :integer
 # return_items_count  :integer
 # garage              :string
-
+require 'state_machine'
 
 class HireItem < ActiveRecord::Base
   belongs_to   :sew_hire_order
@@ -45,6 +45,7 @@ class HireItem < ActiveRecord::Base
   def state
       self.sew_hire_order.state_cn
   end
+
   def sew_name
       self.sew == nil ? "" : self.sew.sew_name
   end

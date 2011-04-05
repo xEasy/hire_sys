@@ -1244,3 +1244,303 @@ Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/query/sum]
 Processing QueryController#sum (for 127.0.0.1 at 2010-12-06 16:53:15) [POST]
   Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"未付款", "content"=>"state_cn"}], "fields"=>["count", "total"], "model_name"=>"return_item"}
 Completed in 8ms (View: 1, DB: 1) | 200 OK [http://localhost/query/sum]
+
+
+Processing ReturnItemsController#index (for 127.0.0.1 at 2010-12-09 23:17:58) [GET]
+Rendering template within layouts/application
+Rendering return_items/index
+Completed in 51ms (View: 26, DB: 6) | 200 OK [http://localhost/return_items]
+
+
+Processing HireItemsController#garage_tree to json (for 127.0.0.1 at 2010-12-09 23:18:01) [POST]
+  Parameters: {"node"=>"xnode-3"}
+Completed in 17ms (View: 1, DB: 3) | 200 OK [http://localhost/hire_items/garage_tree.json]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-09 23:18:02) [POST]
+  Parameters: {"ccv"=>[], "fields"=>["id", "sew_return_order_id", "sew_return_order/create_date", "hire_item/sew/name", "hire_item/garage", "hire_item/sew_hire_order/department/name", "count", "hire_item/hire_date", "hire_item/expect_return_date", "return_date", "sew_return_order/return_person", "sew_return_order/sew_dealer", "sew_return_order/state_cn", "state_cn", "hire_item/price", "total_price", "remark", "hire_item/cloth_number"], "model_name"=>"return_item", "extra_params"=>{"dir"=>"DESC", "sort"=>"sew_return_order_id", "limit"=>15, "offset"=>0}}
+Completed in 43ms (View: 1, DB: 9) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#sum (for 127.0.0.1 at 2010-12-09 23:18:02) [POST]
+  Parameters: {"ccv"=>[], "fields"=>["count", "total"], "model_name"=>"return_item"}
+Completed in 89ms (View: 1, DB: 1) | 200 OK [http://localhost/query/sum]
+
+
+Processing QueryController#sum (for 127.0.0.1 at 2010-12-09 23:18:02) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"未付款", "content"=>"state_cn"}], "fields"=>["count", "total"], "model_name"=>"return_item"}
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/query/sum]
+
+
+Processing SewReturnOrdersController#index (for 127.0.0.1 at 2010-12-09 23:18:08) [GET]
+Rendering template within layouts/application
+Rendering sew_return_orders/index
+Completed in 22ms (View: 10, DB: 1) | 200 OK [http://localhost/sew_return_orders]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-09 23:18:11) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id", "number", "department/name", "return_person", "sew_dealer", "create_date", "create_time", "state_cn", "remark"], "model_name"=>"sew_return_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 8ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-09 23:18:11) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_return_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"已批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_return_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_return_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_return_order"}]}
+Completed in 17ms (View: 1, DB: 2) | 200 OK [http://localhost/query/all_count]
+
+
+Processing SewReturnOrdersController#new (for 127.0.0.1 at 2010-12-09 23:18:18) [GET]
+Rendering template within layouts/application
+Rendering sew_return_orders/new
+Completed in 34ms (View: 8, DB: 4) | 200 OK [http://localhost/sew_return_orders/new]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-09 23:18:21) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"IE", "content"=>"sew_hire_order/department/name"}, {"condition"=>"equals", "value"=>"hire_complite", "content"=>"sew_hire_order/state"}], "fields"=>["hire_item_id", "sew_hire_order_id", "sew/name", "cloth_number", "sew_hire_order/state_cn", "count", "retain_count", "returning_count", "returned_count", "hire_date", "expect_return_date", "sew_hire_order/department/name", "sew_hire_order/hire_person"], "model_name"=>"hire_item", "extra_params"=>{"dir"=>"DESC", "sort"=>"sew_hire_order_id", "limit"=>10, "offset"=>0}}
+Completed in 17ms (View: 1, DB: 2) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-09 23:18:26) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"IE", "content"=>"sew_hire_order/department/name"}, {"condition"=>"equals", "value"=>"hire_complite", "content"=>"sew_hire_order/state"}], "fields"=>["hire_item_id", "sew_hire_order_id", "sew/name", "cloth_number", "sew_hire_order/state_cn", "count", "retain_count", "returning_count", "returned_count", "hire_date", "expect_return_date", "sew_hire_order/department/name", "sew_hire_order/hire_person"], "model_name"=>"hire_item", "extra_params"=>{"dir"=>"DESC", "sort"=>"sew_hire_order_id", "limit"=>10, "offset"=>0}}
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing SewHireOrdersController#index (for 127.0.0.1 at 2010-12-09 23:18:29) [GET]
+Rendering template within layouts/application
+Rendering sew_hire_orders/index
+Completed in 23ms (View: 11, DB: 1) | 200 OK [http://localhost/sew_hire_orders]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-09 23:18:31) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id", "number", "create_date", "create_time", "hire_person", "department/name", "state", "remark", "state_cn"], "model_name"=>"sew_hire_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 7ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-09 23:18:31) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"租车完成", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_hire_order"}]}
+Completed in 13ms (View: 1, DB: 3) | 200 OK [http://localhost/query/all_count]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-09 23:18:32) [POST]
+  Parameters: {"ccv"=>[], "fields"=>["id", "number", "create_date", "create_time", "hire_person", "department/name", "state", "remark", "state_cn"], "model_name"=>"sew_hire_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 12ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-09 23:18:32) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"租车完成", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_hire_order"}]}
+Completed in 12ms (View: 1, DB: 1) | 200 OK [http://localhost/query/all_count]
+
+
+Processing SewHireOrdersController#hire_items to json (for 127.0.0.1 at 2010-12-09 23:18:34) [GET]
+  Parameters: {"id"=>"1", "_dc"=>"1291907914867"}
+Completed in 14ms (View: 1, DB: 2) | 200 OK [http://localhost/sew_hire_orders/1/hire_items.json?_dc=1291907914867]
+
+
+Processing SewHireOrdersController#hire_items to json (for 127.0.0.1 at 2010-12-09 23:18:35) [GET]
+  Parameters: {"id"=>"2", "_dc"=>"1291907915441"}
+Completed in 17ms (View: 1, DB: 2) | 200 OK [http://localhost/sew_hire_orders/2/hire_items.json?_dc=1291907915441]
+
+
+Processing SewHireOrdersController#hire_items to json (for 127.0.0.1 at 2010-12-09 23:18:35) [GET]
+  Parameters: {"id"=>"2", "_dc"=>"1291907915460"}
+Completed in 14ms (View: 1, DB: 1) | 200 OK [http://localhost/sew_hire_orders/2/hire_items.json?_dc=1291907915460]
+
+
+Processing SewHireOrdersController#new (for 127.0.0.1 at 2010-12-09 23:18:37) [GET]
+Rendering template within layouts/application
+Rendering sew_hire_orders/new
+Completed in 15ms (View: 8, DB: 1) | 200 OK [http://localhost/sew_hire_orders/new]
+
+
+Processing SewController#for_select to json (for 127.0.0.1 at 2010-12-09 23:18:45) [GET]
+  Parameters: {"_dc"=>"1291907925504", "query"=>""}
+Completed in 9ms (View: 1, DB: 1) | 200 OK [http://localhost/sew/for_select.json?_dc=1291907925504&query=]
+
+
+Processing SewHireOrdersController#create to json (for 127.0.0.1 at 2010-12-09 23:19:44) [POST]
+  Parameters: {"order"=>{"delete_item_ids"=>[], "hire_items_attributes"=>[{"sew_id"=>"2", "cloth_number"=>"WWW", "expect_return_date"=>"2010-12-30T00:00:00", "hire_date"=>"2010-12-09T00:00:00", "count"=>123}, {"sew_id"=>"2", "cloth_number"=>"WWW", "expect_return_date"=>"2010-12-22T00:00:00", "hire_date"=>"2010-12-09T00:00:00", "count"=>123}, {"sew_id"=>"3", "cloth_number"=>"FR4", "expect_return_date"=>"2010-12-22T00:00:00", "hire_date"=>"2010-12-09T00:00:00", "count"=>123}, {"sew_id"=>"2", "cloth_number"=>"FRFR", "expect_return_date"=>"2010-12-15T00:00:00", "hire_date"=>"2010-12-09T00:00:00", "count"=>123}, {"sew_id"=>"2", "cloth_number"=>"VBR", "expect_return_date"=>"2010-12-08T00:00:00", "hire_date"=>"2010-12-09T00:00:00", "count"=>123}], "remark"=>"", "hire_person"=>"jj", "create_time"=>"23:18", "create_date"=>"2010-12-09T00:00:00", "department_id"=>1}}
+
+ActiveRecord::UnknownAttributeError (unknown attribute: create_time):
+  /usr/lib/ruby/gems/1.8/gems/state_machine-0.9.4/lib/state_machine/integrations/active_record.rb:440:in `attributes='
+  /usr/lib/ruby/gems/1.8/gems/state_machine-0.9.4/lib/state_machine/integrations/active_record.rb:418:in `initialize'
+  app/controllers/sew_hire_orders_controller.rb:43:in `new'
+  app/controllers/sew_hire_orders_controller.rb:43:in `create'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SewHireOrdersController#index (for 127.0.0.1 at 2010-12-10 14:26:55) [GET]
+Redirected to http://localhost:3000/login
+Filter chain halted as [:authentication] rendered_or_redirected.
+Completed in 15ms (DB: 52) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-12-10 14:26:55) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 41ms (View: 36, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-12-10 14:26:57) [POST]
+  Parameters: {"commit"=>"登录", "authenticity_token"=>"q5VYLwWL20kr0Wh7EWBkW0A4q8klHg2SJiD8eLE5zD0=", "login"=>"admin", "password"=>"hzuhzu"}
+Redirected to http://localhost:3000/
+Completed in 94ms (DB: 85) | 302 Found [http://localhost/session]
+
+
+Processing SewHireOrdersController#index (for 127.0.0.1 at 2010-12-10 14:26:57) [GET]
+Rendering template within layouts/application
+Rendering sew_hire_orders/index
+Completed in 46ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:26:59) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id", "number", "create_date", "create_time", "hire_person", "department/name", "state", "remark", "state_cn"], "model_name"=>"sew_hire_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 55ms (View: 1, DB: 42) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-10 14:26:59) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"租车完成", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_hire_order"}]}
+Completed in 14ms (View: 1, DB: 3) | 200 OK [http://localhost/query/all_count]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:27:01) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id", "number", "create_date", "create_time", "hire_person", "department/name", "state", "remark", "state_cn"], "model_name"=>"sew_hire_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 6ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-10 14:27:01) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"租车完成", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_hire_order"}]}
+Completed in 12ms (View: 1, DB: 1) | 200 OK [http://localhost/query/all_count]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:27:01) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id", "number", "create_date", "create_time", "hire_person", "department/name", "state", "remark", "state_cn"], "model_name"=>"sew_hire_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 8ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-10 14:27:01) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"租车完成", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_hire_order"}]}
+Completed in 12ms (View: 1, DB: 1) | 200 OK [http://localhost/query/all_count]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:27:02) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id", "number", "create_date", "create_time", "hire_person", "department/name", "state", "remark", "state_cn"], "model_name"=>"sew_hire_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 7ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-10 14:27:02) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"租车完成", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_hire_order"}]}
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/query/all_count]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:27:03) [POST]
+  Parameters: {"ccv"=>[], "fields"=>["id", "number", "create_date", "create_time", "hire_person", "department/name", "state", "remark", "state_cn"], "model_name"=>"sew_hire_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 14ms (View: 1, DB: 3) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-10 14:27:03) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"租车完成", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_hire_order"}]}
+Completed in 8ms (View: 0, DB: 1) | 200 OK [http://localhost/query/all_count]
+
+
+Processing SewHireOrdersController#hire_items to json (for 127.0.0.1 at 2010-12-10 14:27:04) [GET]
+  Parameters: {"id"=>"1", "_dc"=>"1291962424625"}
+Completed in 123ms (View: 1, DB: 99) | 200 OK [http://localhost/sew_hire_orders/1/hire_items.json?_dc=1291962424625]
+
+
+Processing SewHireOrdersController#hire_items to json (for 127.0.0.1 at 2010-12-10 14:27:05) [GET]
+  Parameters: {"id"=>"2", "_dc"=>"1291962425211"}
+Completed in 122ms (View: 1, DB: 3) | 200 OK [http://localhost/sew_hire_orders/2/hire_items.json?_dc=1291962425211]
+
+
+Processing SewHireOrdersController#hire_items to json (for 127.0.0.1 at 2010-12-10 14:27:05) [GET]
+  Parameters: {"id"=>"2", "_dc"=>"1291962425230"}
+Completed in 17ms (View: 1, DB: 1) | 200 OK [http://localhost/sew_hire_orders/2/hire_items.json?_dc=1291962425230]
+
+
+Processing SewReturnOrdersController#index (for 127.0.0.1 at 2010-12-10 14:27:07) [GET]
+Rendering template within layouts/application
+Rendering sew_return_orders/index
+Completed in 21ms (View: 9, DB: 1) | 200 OK [http://localhost/sew_return_orders]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:27:09) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id", "number", "department/name", "return_person", "sew_dealer", "create_date", "create_time", "state_cn", "remark"], "model_name"=>"sew_return_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 12ms (View: 1, DB: 6) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-10 14:27:09) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_return_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"已批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_return_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_return_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_return_order"}]}
+Completed in 18ms (View: 1, DB: 11) | 200 OK [http://localhost/query/all_count]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:27:11) [POST]
+  Parameters: {"ccv"=>[], "fields"=>["id", "number", "department/name", "return_person", "sew_dealer", "create_date", "create_time", "state_cn", "remark"], "model_name"=>"sew_return_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-10 14:27:11) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_return_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"已批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_return_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_return_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_return_order"}]}
+Completed in 10ms (View: 1, DB: 2) | 200 OK [http://localhost/query/all_count]
+
+
+Processing SewReturnOrdersController#return_items to json (for 127.0.0.1 at 2010-12-10 14:27:12) [GET]
+  Parameters: {"id"=>"1", "_dc"=>"1291962432538"}
+Completed in 31ms (View: 2, DB: 3) | 200 OK [http://localhost/sew_return_orders/1/return_items.json?_dc=1291962432538]
+
+
+Processing SewReturnOrdersController#return_items to json (for 127.0.0.1 at 2010-12-10 14:27:12) [GET]
+  Parameters: {"id"=>"1", "_dc"=>"1291962432561"}
+Completed in 34ms (View: 8, DB: 2) | 200 OK [http://localhost/sew_return_orders/1/return_items.json?_dc=1291962432561]
+
+
+Processing SewReturnOrdersController#new (for 127.0.0.1 at 2010-12-10 14:27:14) [GET]
+Rendering template within layouts/application
+Rendering sew_return_orders/new
+Completed in 48ms (View: 8, DB: 12) | 200 OK [http://localhost/sew_return_orders/new]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:27:18) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"IE", "content"=>"sew_hire_order/department/name"}, {"condition"=>"equals", "value"=>"hire_complite", "content"=>"sew_hire_order/state"}], "fields"=>["hire_item_id", "sew_hire_order_id", "sew/name", "cloth_number", "sew_hire_order/state_cn", "count", "retain_count", "returning_count", "returned_count", "hire_date", "expect_return_date", "sew_hire_order/department/name", "sew_hire_order/hire_person"], "model_name"=>"hire_item", "extra_params"=>{"dir"=>"DESC", "sort"=>"sew_hire_order_id", "limit"=>10, "offset"=>0}}
+Completed in 37ms (View: 1, DB: 19) | 200 OK [http://localhost/query/work]
+
+
+Processing SewHireOrdersController#index (for 127.0.0.1 at 2010-12-10 14:27:28) [GET]
+Rendering template within layouts/application
+Rendering sew_hire_orders/index
+Completed in 15ms (View: 10, DB: 1) | 200 OK [http://localhost/sew_hire_orders]
+
+
+Processing SewHireOrdersController#index (for 127.0.0.1 at 2010-12-10 14:27:28) [GET]
+Rendering template within layouts/application
+Rendering sew_hire_orders/index
+Completed in 10ms (View: 7, DB: 1) | 200 OK [http://localhost/sew_hire_orders]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:27:30) [POST]
+  Parameters: {"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id", "number", "create_date", "create_time", "hire_person", "department/name", "state", "remark", "state_cn"], "model_name"=>"sew_hire_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 8ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-10 14:27:30) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"租车完成", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_hire_order"}]}
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/query/all_count]
+
+
+Processing QueryController#work (for 127.0.0.1 at 2010-12-10 14:27:31) [POST]
+  Parameters: {"ccv"=>[], "fields"=>["id", "number", "create_date", "create_time", "hire_person", "department/name", "state", "remark", "state_cn"], "model_name"=>"sew_hire_order", "extra_params"=>{"dir"=>"DESC", "sort"=>"id", "limit"=>10, "offset"=>0}}
+Completed in 12ms (View: 1, DB: 1) | 200 OK [http://localhost/query/work]
+
+
+Processing QueryController#all_count (for 127.0.0.1 at 2010-12-10 14:27:31) [POST]
+  Parameters: {"all_count"=>[{"ccv"=>[{"condition"=>"equals", "value"=>"待批准", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"主管已批", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"部门租车中", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"租车完成", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[{"condition"=>"equals", "value"=>"取消", "content"=>"state_cn"}], "fields"=>["id"], "model_name"=>"sew_hire_order"}, {"ccv"=>[], "fields"=>["id"], "model_name"=>"sew_hire_order"}]}
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/query/all_count]

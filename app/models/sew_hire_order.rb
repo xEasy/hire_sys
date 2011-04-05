@@ -64,5 +64,8 @@ class SewHireOrder < ActiveRecord::Base
     state_cn_become = StateCn[self.state]
     self.state_cn = state_cn_become 
   end
-
+  
+  def create_daytime
+    create_date.to_s + " " + create_time
+  end
 end

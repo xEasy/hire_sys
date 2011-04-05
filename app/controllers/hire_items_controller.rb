@@ -3,7 +3,8 @@ class HireItemsController < ApplicationController
   end
 
   def can_return_hire_items
-    @items,count = HireItem.can_be_returned_items( params )
+    r = HireItem.can_be_returned_items_id
+    @items,@count = HireItme.id_equals(r).department_equals( current_user.department ),r.count
     @items = @items.collect do |item|
         item.attributes.merge( 
             :sew_name => item.sew_name, 
@@ -15,7 +16,7 @@ class HireItemsController < ApplicationController
             :hire_number => item.hire_number,
             :department => item.department ) 
         end
-    render_json @items,count
+    render_json @items,@count
   end 
 
   #PUT /hire_items/update_details.json
@@ -24,6 +25,7 @@ class HireItemsController < ApplicationController
     items = params[:items]
     items.each do |i| 
       HireItem.update(i[:id],
+          :actual_hire_date => i[:actual_hire_date],
           :price => i[:price],
           :purchasing_remark => i[:purchasing_remark],
           :garage => i[:garage]) 

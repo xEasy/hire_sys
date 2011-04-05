@@ -108,6 +108,7 @@ Wando.ReturnOrderDetail = {
       },
       failure: function() {
         remark = remark || "";
+         // var msg = eval( response.responseText ).content.error_messages;
         var msg = String.format( '不能{0},请确认所选取的退车单状态。',remark );
         Ext.Msg.alert( '提示',msg );
       }
@@ -175,9 +176,10 @@ Wando.ReturnOrderDetail = {
       { header: '衣车名称及类型', dataIndex: 'hire_item/sew/name', sortable: true, width: 100 },
       { header: '款号', dataIndex: 'hire_item/cloth_number', sortable: true,width:80 },
       { header: '车行',     dataIndex: 'hire_item/garage', sortable: true, width: 100 },
-      { header: '部门',     dataIndex: 'hire_item/sew_hire_order/department/name', sortable: true, width: 60 },
+      { header: '部门',     dataIndex: 'sew_return_order/department/name', sortable: true, width: 60 },
       { header: '退车数量', dataIndex: 'count', sortable: true, width: 60 },
-      { header: '租车日期', dataIndex: 'hire_item/hire_date', sortable: true, width: 80 },
+      { header: '需求日期', dataIndex: 'hire_item/hire_date', sortable: true, width: 80 },
+      { header: '实际租车日期', dateIndex: 'hire_item/actual_hire_date', sortable: true, width: 80 },
       { header: '预计退还日期', dataIndex: 'hire_item/expect_return_date' ,sortable: true, width: 80 },
       { header: '实际退期', dataIndex: 'return_date', sortable: true, width: 80 },
       { header: '经手人',   dataIndex: 'sew_return_order/return_person', sortable: true, width: 70 },
@@ -188,9 +190,9 @@ Wando.ReturnOrderDetail = {
       { header: '合计',     dataIndex: 'total_price', sortable: true, width:70 },
       { header: '备注',     dataIndex: 'remark', sortable: true }
     ];
-    ( !this.pm.permittedTo('view_total_price','return_items') ) && cm.splice( 17,1 );
-    ( !this.pm.permittedTo('view_price','return_items') ) && cm.splice( 16,1 );
-    ( !this.pm.permittedTo('view_pay_state','sew_return_orders') ) && cm.splice( 15,1 );
+    ( !this.pm.permittedTo('view_total_price','return_items') ) && cm.splice( 18,1 );
+    ( !this.pm.permittedTo('view_price','return_items') ) && cm.splice( 17,1 );
+    ( !this.pm.permittedTo('view_pay_state','sew_return_orders') ) && cm.splice( 16,1 );
     ( !this.pm.permittedTo('view_garage','return_items') ) && cm.splice( 6,1 );
     
 
@@ -216,7 +218,7 @@ Wando.ReturnOrderDetail = {
         "sew_return_order/create_date",
         "hire_item/sew/name",
         "hire_item/garage",
-        "hire_item/sew_hire_order/department/name",
+        "sew_return_order/department/name",
         "count",
         "hire_item/hire_date",
         "hire_item/expect_return_date",
@@ -228,7 +230,8 @@ Wando.ReturnOrderDetail = {
         "hire_item/price",
         "total_price",
         "remark",
-        "hire_item/cloth_number"
+        "hire_item/cloth_number",
+        "hire_item/actual_hire_date"
       ],
       proxy: new Ext.data.HttpProxy({ url: 'return_items.json', method:'GET' }),
       root: 'content',

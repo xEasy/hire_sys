@@ -52,10 +52,10 @@ Wando.AddSewHireOrder = {
           },{
             height: 100, columnWidth: 0.20, layout: 'form',
             items: [ {
-                fieldLabel: '申请日期', id: 'create_date', xtype: 'datefield',format: "Y-m-d", width: 110, value: Wando.erbData.create_date,
+                fieldLabel: '申请日期', id: 'create_date', xtype: 'datefield',format: "Y-m-d H:i", width: 130, value: Wando.erbData.create_date,
                 readOnly: true
             },{
-                fieldLabel: '时间', id: 'create_time', xtype: 'timefield', format: "H:i", width: 110,value:Wando.erbData.create_date,
+                id: 'create_time', xtype: 'timefield', format: "H:i", width: 110,value:Wando.erbData.create_date,hidden: true,
                 readOnly: true
             } ]
           },{
@@ -132,7 +132,7 @@ Wando.AddSewHireOrder = {
       { header: '衣车名称及型号', dataIndex: 'sew_name',editor: Wando.sewCombo, width: 60 },
       { header: '数量', dataIndex: 'count', editor: new Ext.form.NumberField(  ), width:30 },
       { header: '款号', dataIndex: 'cloth_number', editor: new Ext.form.TextField(), width: 30 }, 
-      { header: '租车日期', dataIndex: 'hire_date', type: "datefield" ,width: 40,
+      { header: '需求日期', dataIndex: 'hire_date', type: "datefield" ,width: 40,
           editor: Wando.dateEditor,
           renderer: Wando.dateRender
       },
@@ -211,14 +211,14 @@ Wando.AddSewHireOrder = {
             cloth_number       : r.get( "cloth_number" ),
             hire_date          : r.get( "hire_date" ),
             expect_return_date : r.get( "expect_return_date" ),
-            dep_remark             : r.get( "dep_remark" )
+            dep_remark         : r.get( "dep_remark" )
            }
       }
 
       var hireOrder  = {
           delete_item_ids  : delete_item_ids,
           create_date      : Ext.getCmp( "create_date" ).getValue(),
-          create_time       :  Ext.getCmp( "create_time" ).getValue(),
+          create_time      :  Ext.getCmp( "create_time" ).getValue(),
           department_id    : Wando.erbData.department_id,
           hire_person      : Ext.getCmp( "hire_person" ).getValue(),
           remark           : Ext.getCmp( "remark" ).getValue(),

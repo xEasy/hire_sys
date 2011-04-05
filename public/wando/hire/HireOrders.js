@@ -29,6 +29,7 @@ Wando.HireOrders = {
     this.settingQuery();
 
     new Ext.Viewport({
+      autoScroll: true,
       layout: 'border',
       frame: true,
       items: [
@@ -93,7 +94,7 @@ Wando.HireOrders = {
 
       var hash = { 
           edit          : { text: '编辑'      , handler: scope.onEdit       },
-          dep_approve   : { text: '主管批准'  , handler: scope.onDepApprove },
+          dep_approve   : { text: '部门批准'  , handler: scope.onDepApprove },
           approve       : { text: '采购批准'  , handler: scope.onApprove    },
           hire_complite : { text: '租车完成'  , handler: scope.onHireComplite },
           cancel        : { text: '取消'      , handler: scope.onCancel     },
@@ -158,7 +159,7 @@ Wando.HireOrders = {
           "id",
           "number",
           "create_date",
-          "create_time",
+          "create_daytime",
           "hire_person",
           "department/name",
           "state",
@@ -177,8 +178,8 @@ Wando.HireOrders = {
         { header: "租车单ID", sortable: true, dataIndex: 'id', width:20 },
         { header: "部门",     sortable: true, dataIndex: 'department/name', width:50 },
         { header: "租车人",   sortable: true, dataIndex: 'hire_person', width:50 },
-        { header: "申请日期", sortable: true, dataIndex: 'create_date', width: 50 },
-        { header: "时间",     sortable: true, dataIndex: 'create_time', width: 50 }, 
+        { header: "日期",     sortable: true, dataIndex: 'create_date',hidden: true },
+        { header: "申请日期", sortable: true, dataIndex: 'create_daytime', width: 50 },
         { header: "状态",     sortable: true, dataIndex: 'state_cn', width:50 },
         { header: "备注",     sortable: true, dataIndex: 'remark' }
       ]
@@ -244,6 +245,7 @@ Wando.HireOrders = {
         var r = store.getAt( i );
         returnData[i] = {
           id         :   r.get( "id" ),
+          actual_hire_date : r.get( "actual_hire_date" ),
           garage     :   r.get( "garage" ),
           price      :   r.get( "price" ),
           purchasing_remark : r.get( "purchasing_remark" )
@@ -256,6 +258,7 @@ Wando.HireOrders = {
         jsonData : { items : returnData },
         success: function() {
           Ext.Msg.alert( "提示", "保存成功" );
+          store.commitChanges();
         },
         failure: function( response, onpts ) {
           Ext.Msg.alert( "提示","无法保存" );
@@ -264,16 +267,27 @@ Wando.HireOrders = {
     });
   },
 
+  cancelHandler: function() {
+      var scope = this;
+      var store = scope.hireOrderItemsStore;
+      Ext.Msg.confirm("提示", "确定要撤销吗？",function  (button) {
+          if(button == "no") return;
+          store.rejectChanges();
+      });
+  },
+
   createHireOrderItemsGrid: function  () {
     var scope = this;
     var priceAndGarageUpdatable = this.pm.permittedTo( 'update_hire_items','sew_hire_orders' );
+    var actualHireDateUpdateable =  this.pm.permittedTo( 'update_actual_hire_date', 'sew_hire_orders' );
 
     var cm = [
       { header: '衣车名称及类型', dataIndex: 'sew_name', width: 80 },
       { header: '款号',           dataIndex: 'cloth_number', width:50 },      
       { header: '数量',           dataIndex: 'count',    width: 50 },
       { header: '未退数量',       dataIndex: 'retain_count', width:50 },
-      { header: '租车日期',       dataIndex: 'hire_date',    width:60 },
+      { header: '需求日期',       dataIndex: 'hire_date',    width:60 },
+      { header: '实际租车日期',   dataIndex: 'actual_hire_date', width: 60, renderer: Wando.dateRender , editor: actualHireDateUpdateable && new Ext.form.DateField()},
       { header: '预计退还日期',   dataIndex: 'expect_return_date', width:60 },
       { header: '部门备注',       dataIndex: 'dep_remark',   widht:80 },      
       { header: '车行名称',       dataIndex: 'garage',     width:60, editor:priceAndGarageUpdatable && new Ext.form.TextField() },
@@ -292,6 +306,7 @@ Wando.HireOrders = {
       "count",
       "cloth_number",
       "retain_count",
+      "actual_hire_date",
       "hire_date",
       "garage",
       "price",
@@ -301,7 +316,10 @@ Wando.HireOrders = {
       "sew_hire_order_id"
     ];
 
-    var bar = ['->','-',{ text: '保存修改', handler: function() { scope.saveHandler(); } },'-'];
+    var bar = ['->','-',
+        { text: '保存修改', handler: function() { scope.saveHandler(); } },'-',
+        { text: '撤销编辑', handler: function() { scope.cancelHandler(); } }
+        ];
     var tbar = priceAndGarageUpdatable ? bar : undefined;
 
     var store = new Ext.data.JsonStore({ fields: fields, url:'/' });
@@ -311,7 +329,7 @@ Wando.HireOrders = {
       anchor: "100% 40%",
       stripeRows: true,
       layout: "fit",
-      clickToEdit: 1,
+      clicksToEdit: 1,
       border: false,
       tbar: tbar,
       loadMask: { msg: "loading" },

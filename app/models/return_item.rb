@@ -19,10 +19,10 @@ class ReturnItem < ActiveRecord::Base
   validates_presence_of :count,         :message => "请填写退车数量"
   validates_presence_of :return_date,   :message => "请填写实际退车日期"
 
-  before_save :valid_count
+  validate_on_create :valid_count
   before_save :save_state_cn
   before_save :save_total
-  require "state_machine" 
+
   state_machine :pay_state, :initial => :unpaid do
     before_transition :unpaid => :paid, :do => :validates_order_approve_state
     before_transition :unpaid => :cancel, :do => :validates_order_cancel_state
@@ -42,38 +42,42 @@ class ReturnItem < ActiveRecord::Base
     rs
   end
 
+  def actual_hire_date
+    hire_item.actual_hire_date == nil ? " " : hire_item.actual_hire_date
+  end
+
   def return_count
-    self.count
+    count
   end
 
   def order_approed?
-    self.sew_return_order.state == "approved"
+    sew_return_order.state == "approved"
   end
 
   def order_cancel?
-    self.sew_return_order.state == "cancel"
+    sew_return_order.state == "cancel"
   end
 
   def sew_hire_order_id
-    self.hire_item.sew_hire_order_id
+    hire_item.sew_hire_order_id
   end
 
   def department
-    self.sew_return_order.department.name
+    sew_return_order.department.name
   end
 
   def garage
-    self.hire_item.garage
+    hire_item.garage
   end
   
   def return_order_state
-    self.sew_return_order.state_cn
+    sew_return_order.state_cn
   end
   def return_person
-    self.sew_return_order.return_person
+    sew_return_order.return_person
   end
   def sew_dealer
-    self.sew_return_order.sew_dealer
+    sew_return_order.sew_dealer
   end
   
   def sew_name
@@ -101,6 +105,7 @@ class ReturnItem < ActiveRecord::Base
   end
 
   def total_price
+    #h_date = self.actual_hire_date.to_s
     h_date = self.hire_date.to_s
     r_date = self.return_date.to_s
     price  = self.price
@@ -114,16 +119,16 @@ class ReturnItem < ActiveRecord::Base
     self.state_cn = state_cn_become 
   end
 
-  def save_total 
-    total_price = self.total_price
-    self.total  = total_price
-  end
 
   private
+
+    def save_total 
+      total_price = self.total_price
+      self.total  = total_price
+    end
     def valid_count 
-      unless self.count < self.retain_count
-        self.errors.add( 'title', '退车数不能大于可退车数量！' )
-        return false
+      if self.count > self.retain_count
+        errors.add_to_base( "退车数量不能大于可退车数！" )
       end
       true
     end
@@ -131,17 +136,15 @@ class ReturnItem < ActiveRecord::Base
       if order_approed?
         return true
       end
-      self.error.add( "","订单未通过批复不能进行付款操作" )
+      self.errors.add( "progress","订单未通过批复不能进行付款操作" )
       return false
     end
     def validates_order_cancel_state
       if order_cancel?
         return true
       end
-      self.error.add( "","订单未取消不能取消付款" )
+      self.errors.add( "progress","订单未取消不能取消付款" )
       return false
     end
-  
-    
 
 end

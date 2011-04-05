@@ -215,7 +215,7 @@ Wando.ReturnOrders = {
               "return_person",
               "sew_dealer",
               "create_date",
-              "create_time",
+              "create_daytime",
               "state_cn",
               "remark",
               "state_cn"
@@ -234,8 +234,8 @@ Wando.ReturnOrders = {
           { header: "部门",  sortable: true,  dataIndex: 'department/name', width: 60 },
           { header: "退车经手人", sortable: true, dataIndex: 'return_person', width:60 },
           { header: "车行经手人", sortable: true, dataIndex: 'sew_dealer', width: 60},
-          { header: "退车单日期", sortable: true, dataIndex: 'create_date', width: 60 },
-          { header: "时间", sortable: true, dataIndex: 'create_time', width: 60 }, 
+          { header: '日期', sortable: true, dataIndex: 'create_date', hidden: true },
+          { header: "退车单日期", sortable: true, dataIndex: 'create_daytime', width: 60 },
           { header: "状态", sortable: true, dataIndex: 'state_cn', width: 60 },
           { header: "备注", sortable: true, dataIndex: 'remark' }
       ]
@@ -300,8 +300,9 @@ Wando.ReturnOrders = {
         { header: '款号',           dataIndex: 'hire_item/cloth_number', width: 50 },
         { header: '退车数量',       dataIndex: 'return_count', width: 50 }, 
         { header: '未退数量',       dataIndex: 'hire_item/retain_count', width: 50 },
-        { header: '租车日期',       dataIndex: 'hire_item/hire_date', width: 60 },
+        { header: '需求日期',       dataIndex: 'hire_item/hire_date', width: 60 },
         { header: '预计退还日期',   dataIndex: 'hire_item/expect_return_date', width: 60 },
+        { header: '实际租车日期',   dataIndex: 'hire_item/actual_hire_date', width: 60 }, 
         { header: '实际退期',       dataIndex: 'return_date', width: 60 },
         { header: '车行',           dataIndex: 'hire_item/garage', width: 60 },
         { header: '单价',           dataIndex: 'hire_item/price',    width: 50 },
@@ -322,6 +323,7 @@ Wando.ReturnOrders = {
         "hire_item/cloth_number",
         "return_count",
         "hire_item/retain_count",
+        "hire_item/actual_hire_date",
         "hire_item/hire_date",
         "hire_item/expect_return_date",
         "return_date",

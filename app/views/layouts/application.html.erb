@@ -26,8 +26,8 @@
         <% if current_user %>
           <div id="top">
             <%= current_user.login %>( <%= current_user.department.name %> )&nbsp; 你好！
-            <span class="separator">|</span>
-            <a class="logout" href="/logout">logout</a>
+            <span class="separator">|   </span>
+            <a class="logout" href="/logout">退出登录</a>
             <span style="float: right">三江汇聚租车系统</span>
           </div>
           <%= render :partial => "/layouts/menu" %>

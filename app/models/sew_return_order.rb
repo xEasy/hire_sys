@@ -22,7 +22,6 @@ class SewReturnOrder < ActiveRecord::Base
 
   validates_presence_of :create_date   , :message => "请填写退车单日期"
 
-  before_validation_on_create :default_department_id
 
   accepts_nested_attributes_for :return_items
 
@@ -61,14 +60,17 @@ class SewReturnOrder < ActiveRecord::Base
     self.department == nil ? "" : self.department.name.to_s
   end
 
+  def created_time
+    created_at
+  end
+
   def save_state_cn
     state_cn_become = StateCn[self.state]
     self.state_cn = state_cn_become 
   end
 
-  def default_department_id
-    self.department_id = '1'
+  def create_daytime
+    create_date.to_s + " " + create_time
   end
   
-
 end
