@@ -1,3 +1,6 @@
+namespace :data do
+  desc "生成基础数据"
+  task :gen_base => :environment do
     Department.create(:name => "老板")
     Department.create(:name => "采购")
     Department.create(:name => "仓库")
@@ -25,4 +28,5 @@
     Role.create(:title => "admin"   , :permission_ids => (1..42).to_a)
     Role.create(:title => "manager"   , :permission_ids => (1..42).to_a)
     Role.create(:title => "boss"   , :permission_ids => (1..42).to_a)
-    
+  end
+end

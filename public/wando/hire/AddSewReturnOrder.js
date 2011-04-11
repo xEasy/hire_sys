@@ -338,7 +338,7 @@ Wando.AddSewReturnOrder = {
 
     var win =  new Ext.Window({
         layout: 'fit',
-        width : 650,
+        width : 850,
         height : 400,
         constrainHeader: true,
         closeAction : 'hide',

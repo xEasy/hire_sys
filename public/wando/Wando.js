@@ -130,7 +130,7 @@ Ext.apply(Wando, {
     dateEditor: new Ext.grid.GridEditor( new Ext.form.DateField({ format:"Y-m-d", editable: false }) ),
   
     dateRender: function( value ){
-       return ( value && value.constructor == Date ) ? value.dateFormat( "    Y-m-d" ) : value;
+       return ( value && value.constructor == Date ) ? value.dateFormat( "Y-m-d" ) : value;
      },
 
     //衣车ComboBox
