@@ -60,4 +60,3 @@ def get_error_msg( r )
   html_separator  = "<br />"
   msg.join( html_separator )
 end
-

@@ -136,14 +136,14 @@ class ReturnItem < ActiveRecord::Base
       if order_approed?
         return true
       end
-      self.errors.add( "progress","订单未通过批复不能进行付款操作" )
+      errors.add_to_base( "progress","订单未通过批复不能进行付款操作" )
       return false
     end
     def validates_order_cancel_state
       if order_cancel?
         return true
       end
-      self.errors.add( "progress","订单未取消不能取消付款" )
+      errors.add_to_base( "progress","订单未取消不能取消付款" )
       return false
     end
 

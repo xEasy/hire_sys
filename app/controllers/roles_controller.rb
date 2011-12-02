@@ -12,11 +12,15 @@ class RolesController < ApplicationController
 
   # PUT /roles/:id
   def update
-    r = Role.find(params[:id])
-    if r.update_attributes(params[:role])
-      render_json "success"
-    else
-      render_error get_error_msg(r)
+    begin
+      r = Role.find(params[:id])
+      if r.update_attributes(params[:role])
+        render_json "success"
+      else
+        render_error r
+      end
+    rescue => e
+      render_error e.message
     end
   end
 

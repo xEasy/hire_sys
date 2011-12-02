@@ -218,7 +218,7 @@ Wando.AddSewHireOrder = {
       var hireOrder  = {
           delete_item_ids  : delete_item_ids,
           create_date      : Ext.getCmp( "create_date" ).getValue(),
-          create_time      :  Ext.getCmp( "create_time" ).getValue(),
+          create_time      : Ext.getCmp( "create_time" ).getValue(),
           department_id    : Wando.erbData.department_id,
           hire_person      : Ext.getCmp( "hire_person" ).getValue(),
           remark           : Ext.getCmp( "remark" ).getValue(),

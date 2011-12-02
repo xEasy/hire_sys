@@ -25,8 +25,8 @@ namespace :data do
       end
     end
 
-    Role.create(:title => "admin"   , :permission_ids => (1..42).to_a)
-    Role.create(:title => "manager"   , :permission_ids => (1..42).to_a)
-    Role.create(:title => "boss"   , :permission_ids => (1..42).to_a)
+    Role.create(:title => "admin"   , :permission_ids => (1..43).to_a)
+    Role.create(:title => "manager"   , :permission_ids => (1..43).to_a)
+    Role.create(:title => "boss"   , :permission_ids => (1..43).to_a)
   end
 end

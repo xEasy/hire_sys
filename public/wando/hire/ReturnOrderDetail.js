@@ -116,41 +116,41 @@ Wando.ReturnOrderDetail = {
   },
   
   changePayStateValue: function  (selections,state_cn) {
-    for (var i = 0; i < selections.length; i++) {
-      var record = selections[i];
-      record.set("state_cn",state_cn);
-    };
+      for (var i = 0; i < selections.length; i++) {
+          var record = selections[i];
+          record.set("state_cn",state_cn);
+      };
   },
 
   createTree: function  () {
-    var scope = this;
+      var scope = this;
 
-    if (!this.pm.permittedTo( 'view_garage','return_items' )) {
-      return false;   //Or构造新的状态选择树？？默认为车行，没有车行查看权限时不构造此状态树。
-    };
+      if (!this.pm.permittedTo( 'view_garage','return_items' )) {
+        return false;   //Or构造新的状态选择树？？默认为车行，没有车行查看权限时不构造此状态树。
+      };
 
-    this.root = new Ext.tree.AsyncTreeNode({
-      text: '车行',
-      expanded : true,
-      draggable : false
-    });
-    
-    return new Ext.tree.TreePanel({
-      useArrows: true,
-      autoScroll: true,
-      root : this.root,
-      width : 120,
-      title : '车行',
-      region : 'west',
-      collapsible : true,
-      loader: new Ext.tree.TreeLoader({ dataUrl: 'hire_items/garage_tree.json' }),
-      listeners: {
-        "click" : function( node ){
-          //grid显示对应车行数据
-          scope.loadReturnDetail(node.text);
-        }
-      }
-    });
+      this.root = new Ext.tree.AsyncTreeNode({
+          text: '车行',
+          expanded : true,
+          draggable : false
+      });
+      
+      return new Ext.tree.TreePanel({
+          useArrows: true,
+          autoScroll: true,
+          root : this.root,
+          width : 120,
+          title : '车行',
+          region : 'west',
+          collapsible : true,
+          loader: new Ext.tree.TreeLoader({ dataUrl: 'hire_items/garage_tree.json' }),
+          listeners: {
+            "click" : function( node ){
+              //grid显示对应车行数据
+              scope.loadReturnDetail(node.text);
+            }
+          }
+      });
   },
 
   createGrid: function  () {

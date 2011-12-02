@@ -51,7 +51,7 @@ class SewHireOrder < ActiveRecord::Base
   def delete_item_ids
     if !@delete_item_ids.blank?
       @delete_item_ids.each do |id|
-        SewHireOrder.find(id).destory if(SewHireOrder.exists? id)
+        HireItem.find(id).destory if(HireItem.exists? id)
       end
     end
   end

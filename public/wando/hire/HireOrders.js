@@ -318,7 +318,7 @@ Wando.HireOrders = {
 
     var bar = ['->','-',
         { text: '保存修改', handler: function() { scope.saveHandler(); } },'-',
-        { text: '撤销修改', handler: function() { scope.cancelHandler(); } }
+        { text: '撤销编辑', handler: function() { scope.cancelHandler(); } }
         ];
     var tbar = priceAndGarageUpdatable ? bar : undefined;
 

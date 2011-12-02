@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20110216131511) do
     t.integer  "return_items_count", :default => 0
     t.date     "actual_hire_date"
   end
+  add_index "hire_items", ["garage"], :name => "index_garage_on_hire_items"
 
   create_table "operation_records", :force => true do |t|
     t.date     "op_date"
@@ -130,7 +131,6 @@ ActiveRecord::Schema.define(:version => 20110216131511) do
     t.boolean  "active"
     t.integer  "department_id"
   end
-
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
 end

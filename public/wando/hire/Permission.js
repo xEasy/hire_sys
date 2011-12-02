@@ -8,12 +8,13 @@ Wando.Permission = {
         new Ext.Viewport({
             layout: 'border',
             frame: true,
+            autoScroll: true,
             items: [
                 Wando.menuStub,
-                { 
+                {
                     region: 'center',
                     split : false,
-                    layout: 'anchor',
+                    layout: 'fit',
                     items : [this.form]
                 }
             ]
@@ -23,6 +24,7 @@ Wando.Permission = {
     createFormPanel: function() { 
         return new Ext.FormPanel({
             title : '权限管理',
+            autoScroll: true,
             frame : true,
             border: false,
             height: 800,

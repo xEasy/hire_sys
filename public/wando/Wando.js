@@ -149,12 +149,12 @@ Ext.apply(Wando, {
             displayField: 'name',
             listeners: {
               select: function( combo, record, index ) {
-                r = record;
-                var scope = Wando.AddSewHireOrder;
-                var selectedRecord  = scope.grid.getSelectionModel().selection.record;
-                selectedRecord.data.sew_id = record.get( "id" );
-                selectedRecord.commit();
-                combo.fireEvent( 'blur' );
+                  r = record;
+                  var scope = Wando.AddSewHireOrder;
+                  var selectedRecord  = scope.grid.getSelectionModel().selection.record;
+                  selectedRecord.data.sew_id = record.get( "id" );
+                  selectedRecord.commit();
+                  combo.fireEvent( 'blur' );
               }
             }
     }),
